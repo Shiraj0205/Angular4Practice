@@ -21,6 +21,10 @@ import { SignupFormComponent } from './signup-form/signup-form.component';
 import { FormArrayDemoComponent } from './form-array-demo/form-array-demo.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { PostsComponent } from './posts/posts.component';
+import { PostsService } from './services/posts.service';
+import { ErrorHandler } from '@angular/core';
+import { AppErrorHandler } from './common/app-error-handler';
+import { FollowersComponent } from './followers/followers.component';
 
 
 @NgModule({
@@ -39,7 +43,8 @@ import { PostsComponent } from './posts/posts.component';
     SignupFormComponent,
     FormArrayDemoComponent,
     ChangePasswordComponent,
-    PostsComponent
+    PostsComponent,
+    FollowersComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +54,9 @@ import { PostsComponent } from './posts/posts.component';
   ],
   // Register the component dependencies in this module
   providers: [
-    CoursesService
+    CoursesService,
+    PostsService,
+    {provide: ErrorHandler, useClass : AppErrorHandler}
   ],
   bootstrap: [AppComponent]
 }) 
